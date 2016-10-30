@@ -80,5 +80,3 @@ la complexité en temps, pour une raison simple : un problème qui a une
 complexité donnée en temps ne pourra pas avoir une complexité pire en espace.
 Intuitivement, dans un temps donné, on ne peut pas toucher à une infinité de
 cases mémoires.
-
-<!-- % vim: set spelllang=fr: -->
