@@ -8,7 +8,7 @@ SITEURL = ''
 
 PATH = 'content'
 
-TIMEZONE = 'Europe/Paris'
+TIMEZONE = 'Indian/Reunion'
 
 DEFAULT_LANG = 'fr'
 
@@ -16,6 +16,8 @@ DEFAULT_LANG = 'fr'
 FEED_ALL_ATOM = None
 CATEGORY_FEED_ATOM = None
 TRANSLATION_FEED_ATOM = None
+AUTHOR_FEED_ATOM = None
+AUTHOR_FEED_RSS = None
 
 # Blogroll
 #LINKS = (('Pelican', 'http://getpelican.com/'),
@@ -27,7 +29,7 @@ TRANSLATION_FEED_ATOM = None
 SOCIAL = (('Twitter', 'https://twitter.com/cygaal'),
           ('Stack Overflow', 'http://stackoverflow.com/users/481584/quentin-pradet'))
 
-DEFAULT_PAGINATION = 5
+DEFAULT_PAGINATION = 10
 
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True
