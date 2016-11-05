@@ -1,6 +1,6 @@
 Title: This is the end?
 Date: 2010-02-09T14:07:35+01:00
-Category: Logiciel libre
+Category: Logiciel
 
 **Note été 2014 :** Ce billet a été écrit en février 2010, suite à mon Google
 Summer of Code de l'été 2009. Depuis, tout le fantastique travail sur BZFlag 3
