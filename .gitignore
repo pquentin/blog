@@ -3,3 +3,4 @@ output
 cache
 *.pid
 *.sw[a-z]
+.DS_Store
