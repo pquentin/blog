@@ -1,6 +1,7 @@
 Title: Évaluation de systèmes complexes : quelques pistes
 Date: 2012-01-20T14:45:53+01:00
 Category: TAL
+status: hidden
 
 <p>L'évaluation des systèmes complexes est depuis toujours une partie centrale de l'activité des développeurs travaillant dessus. Le sujet est extrêmement vaste ; regardez la page <a href="http://en.wikipedia.org/wiki/Software_testing">Software testing</a> de la Wikipédia anglaise pour vous en rendre compte. Ce n'est pas non plus pour rien que Google recrute des <a href="http://www.google.com/intl/en/jobs/uslocations/mountain-view/swe/software-engineer-in-test-mountain-view/index.html">Software Engineers in Test</a>.</p>
 

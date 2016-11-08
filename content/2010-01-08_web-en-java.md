@@ -1,6 +1,7 @@
 Title: Du web en Java ?
 Date: 2010-01-08T19:33:41+01:00
 Category: Logiciel
+status: hidden
 
 Ce billet est là pour raconter rapidement comment on peut faire du web
 en Java. Je ne recommande ça à personne, c'est simplement que j'aurais

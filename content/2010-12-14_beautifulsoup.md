@@ -1,6 +1,7 @@
 Title: BeautifulSoup
 Date: 2010-12-14T00:20:19+01+00
 Category: Logiciel
+status: hidden
 
 <p>BeautifulSoup est en fait un parseur html. Sa particularité est d'utiliser les mêmes heuristiques que nos navigateurs web pour réussir à obtenir quelque chose de documents pourris où les tags sont pas fermés par exemple. Ça permet donc d'avoir un parser robuste et acceptable pour parser n'importe quelle page web. Comme d'habitude un petit exemple de code ; celui-ci affiche la table des matières de "Erlang Programming" en allant la chercher sur le site d'O'Reilly :</p>
 

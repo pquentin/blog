@@ -98,6 +98,8 @@ stopserver:
 
 publish:
 	$(PELICAN) $(INPUTDIR) -o $(OUTPUTDIR) -s $(PUBLISHCONF) $(PELICANOPTS)
+	find $(OUTPUTDIR) -name '*.html' | xargs -L1 sed -i '' 's,<p>:status: hidden</p>,,'
+	find $(OUTPUTDIR) -name '*.xml' | xargs -L1 sed -i '' 's,&lt;p&gt:status: hidden&lt;/p&gt;,,'
 
 ssh_upload: publish
 	scp -P $(SSH_PORT) -r $(OUTPUTDIR)/* $(SSH_USER)@$(SSH_HOST):$(SSH_TARGET_DIR)

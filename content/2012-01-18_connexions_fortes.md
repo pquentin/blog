@@ -1,6 +1,7 @@
 Title: Extraire les connexions les plus fortes d'un graphe
 Date: 2012-01-18T16:02:49+01:00
 Category: Algorithmique
+status: hidden
 
 ## Besoins
 

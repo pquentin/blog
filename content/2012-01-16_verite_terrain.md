@@ -1,6 +1,7 @@
 Title: Vérité-terrain et gold standard
 Date: 2012-01-16T16:02:49+01:00
 Category: TAL
+status: hidden
 
 En apprentissage automatique, on veut pouvoir identifier la qualité d'un algorithme. Par exemple, on veut savoir si une application de reconnaissance de texte fait beaucoup d'erreurs ou non. Pour le savoir, il faut le comparer avec le travail d'un humain qui n'aura pas fait d'erreurs.
 
