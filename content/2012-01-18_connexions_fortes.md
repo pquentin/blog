@@ -24,4 +24,4 @@ Pour donner un nom au cluster, ou tout simplement pour obtenir un "noeud de dép
 
 ## Un exemple
 
-<p style="width: 60%; margin: 0 auto"><img style="max-width: 100%; box-sizing: border-box" src="http://awesom.eu/~cygal/images/clustering-chat.png" alt="Clustering des sens du mot chat" /><br /> Source : Ressources et méthodes semi-supervisées pour l'analyse sémantique du texte en français - Claire Mouton</p>
+<p style="width: 60%; margin: 0 auto"><img style="max-width: 100%; box-sizing: border-box" src="{filename}/images/clustering-chat.png" alt="Clustering des sens du mot chat" /><br /> Source : Ressources et méthodes semi-supervisées pour l'analyse sémantique du texte en français - Claire Mouton</p>

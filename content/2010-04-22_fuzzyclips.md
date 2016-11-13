@@ -10,6 +10,6 @@ Today I needed to use FuzzyCLIPS under Linux as part of my studies. Unfortunatel
 
 In the Linux version are also included two 32-bit executables, fz_clips, and fz_xclips, the terminal and X versions of the software. Here are the files, for you to download:
 
-  * [FuzzyCLIPS 6.10 Sources and Executables (Linux 32 bit)](http://awesom.eu/~cygal/FuzzyCLIPS/FuzzyCLIPS-6.10d-sources.tar.gz)
-  * [FuzzyCLIPS Documentation](http://awesom.eu/~cygal/FuzzyCLIPS/fzdocs.pdf)
-  * [FuzzyCLIPS Windows Version](http://awesom.eu/~cygal/FuzzyCLIPS/fzclp610dWin.zip)
+  * [FuzzyCLIPS 6.10 Sources and Executables (Linux 32 bit)](http://quentin.pradet.me/blog/media/FuzzyCLIPS/FuzzyCLIPS-6.10d-sources.tar.gz)
+  * [FuzzyCLIPS Documentation](http://quentin.pradet.me/blog/media/FuzzyCLIPS/fzdocs.pdf)
+  * [FuzzyCLIPS Windows Version](http://quentin.pradet.me/blog/media/FuzzyCLIPS/fzclp610dWin.zip)

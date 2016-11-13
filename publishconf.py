@@ -12,6 +12,7 @@ from pelicanconf import *
 
 SITEURL = 'http://quentin.pradet.me/blog'
 RELATIVE_URLS = False
+STATIC_PATHS = ['images', 'media']
 
 FEED_ALL_ATOM = 'feeds/all.atom.xml'
 CATEGORY_FEED_ATOM = 'feeds/%s.atom.xml'
