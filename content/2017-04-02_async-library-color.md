@@ -75,7 +75,7 @@ only synchronous support in mind, and there's a lot of work needed
 before async can happen. Among other things, [Python 2 support has to
 be
 dropped](https://github.com/kennethreitz/requests/issues/1390#issuecomment-225395648),
-and it won't be happen before a few years. It *is* possible to use a
+and it won't happen before a few years. It *is* possible to use a
 threadpool to simulate synchronous code in a asynchronous way, but
 it's only a measure of last resort.
 
@@ -128,8 +128,9 @@ close to impossible.
 
 We could lament at the specific Python situation, but it actually
 enabled a lot of innovation. Each new library appears to be better
-than the next. But still, how do we cope? One way would be keep the
-async functions in our code to a minimum. In [The Function Colour
+than the previous one. But still, how do we cope? One way would be
+keep the async functions in our code to a minimum. In [The Function
+Colour
 Myth](https://lukasa.co.uk/2016/07/The_Function_Colour_Myth/#how-to-live-with-coloured-functions),
 Cory Benfield argues that with care, no more than 10% of your codebase
 needs to be `async` functions. But this is only true in new codebases.
