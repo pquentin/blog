@@ -98,11 +98,11 @@ library. This syntax allows the code to be way more natural to read
 because it's close to sequential code and is much easier to reason
 about. It attracted a lot of mindshare because it was the standard
 approach, and this is what the ambitious
-[aio-libs](https://github.com/aio-libs) project support. That includes
+[aio-libs](https://github.com/aio-libs) project supports. That includes
 aiohttp, but also aiomysql, aiopg, aioredis, and so on. Unfortunately,
 [asyncio is a complex beast with many concepts to
 understand](http://lucumr.pocoo.org/2016/10/30/i-dont-understand-asyncio/).
-Starting Python 3.6, asyncio is no longer included on a [provisional
+Starting with Python 3.6, asyncio is no longer included on a [provisional
 basis](https://docs.python.org/3.5/glossary.html#term-provisional-api)
 and is now guaranteed to be stable. It will continue to be the first
 place newcomers come to. Not going away either.
@@ -111,10 +111,10 @@ Fourth, we have [curio](https://github.com/dabeaz/curio). It reuses
 the syntax introduced with asyncio. After all, in Python [async/await
 is a
 protocol](https://mail.python.org/pipermail/async-sig/2016-November/000166.html)
-and asyncio is only a library, and nothing prevents building others to
-continue to innovate in the space. Unlike asyncio, it does not try to
-support callbacks. Surprisingly, this allows curio users to [write
-less code which is more
+and asyncio is only a library, and nothing prevents building other
+libraries to continue to innovate in the space. Unlike asyncio, it
+does not try to support callbacks. Surprisingly, this allows curio
+users to [write less code which is more
 correct](https://vorpus.org/blog/some-thoughts-on-asynchronous-api-design-in-a-post-asyncawait-world/).
 Unfortunately, curio is still small and does not have all the
 libraries offered by the options above.
@@ -128,7 +128,7 @@ close to impossible.
 
 We could lament at the specific Python situation, but it actually
 enabled a lot of innovation. Each new library appears to be better
-than the previous one. But still, how do we cope? One way would be
+than the previous one. But still, how do we cope? One way would be to
 keep the async functions in our code to a minimum. In [The Function
 Colour
 Myth](https://lukasa.co.uk/2016/07/The_Function_Colour_Myth/#how-to-live-with-coloured-functions),
@@ -147,7 +147,7 @@ The best way to isolate I/O is to perform *no I/O at all*. This
 radical idea from... Cory Benfield allowed to write
 [hyper-h2](https://python-hyper.org/h2/en/stable/) and
 [h11](https://github.com/njsmith/h11). They're implementations of
-HTTP/1.1 and HTTP/2 that don't perform any I/O. How is this possible?
+HTTP/2 and HTTP/1.1 that don't perform any I/O. How is this possible?
 Well, they introduce a toolkit which can be used in any Python code,
 be it synchronous, using async/await, curio, callbacks, and so on. It
 allows the Python ecosystem to start sharing code again. And since
