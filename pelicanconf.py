@@ -26,8 +26,8 @@ AUTHOR_FEED_RSS = None
 #         ('You can modify those links in your config file', '#'),)
 
 # Social widget
-SOCIAL = (('Twitter', 'https://twitter.com/cygaal'),
-          ('Stack Overflow', 'http://stackoverflow.com/users/481584/quentin-pradet'))
+SOCIAL = (('Twitter', 'https://twitter.com/quentinpradet'),
+          ('Stack Overflow', 'https://stackoverflow.com/users/481584/quentin-pradet?tab=profile'))
 
 DEFAULT_PAGINATION = 10
 
