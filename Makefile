@@ -12,7 +12,7 @@ FTP_HOST=localhost
 FTP_USER=anonymous
 FTP_TARGET_DIR=/
 
-SSH_HOST=ssh.alwaysdata.com
+SSH_HOST=ssh-pradet.alwaysdata.net
 SSH_PORT=22
 SSH_USER=pradet
 SSH_TARGET_DIR=/home/pradet/www/quentin/blog
