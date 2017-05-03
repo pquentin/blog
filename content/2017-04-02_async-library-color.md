@@ -2,9 +2,8 @@ Title: What Color is Your Python async Library?
 Date: 2017-04-05T09:00:00+04:00
 Category: Logiciel
 
-Since I've began to program more than ten years ago, I've heard
-everywhere that synchronous, sequential programming is a way of the
-past. In a
+Since I've began to program, I've heard everywhere that synchronous,
+sequential programming is a way of the past. In a
 [manycore](https://en.wikipedia.org/wiki/Manycore_processor) future,
 we will need to write programs that execute in parallel. But aside
 from [embarassingly parallel
@@ -41,9 +40,11 @@ you would like to learn more about this.) But it does makes writing
 asynchronous I/O much more approachable, and I would not consider
 writing asynchronous code without that feature.
 
-Asynchronous I/O has attracted a lot of praise and criticism. The best
-criticism came from Bob Nystrom who wrote a very influential post
-named [What Color is Your
+Asynchronous I/O has attracted a lot of praise and criticism. One
+obvious "problem" is that we do not actually use more CPU cores, we're
+just using one more efficiently. Anyway, the best criticism came from
+Bob Nystrom who wrote a very influential post named [What Color is
+Your
 Function?](http://journal.stuffwithstuff.com/2015/02/01/what-color-is-your-function/)
 in which he explains that asynchronous programming forces us to divide
 the world in two. For every synchronous library that does I/O you now
@@ -54,8 +55,8 @@ asyncio, for example as part of the [aio-libs
 project](https://github.com/aio-libs).
 
 If the cost is so great, why continue to write asynchronous code?
-Speed is not the (only) answer. After all, [carefully written threaded
-code can also handle more than 10K concurrent
+Throughput is not the (only) answer. After all, [carefully written
+threaded code can also handle more than 10K concurrent
 connections](http://stackoverflow.com/questions/17593699/tcp-ip-solving-the-c10k-with-the-thread-per-client-approach/17771219#17771219),
 despite what [some proponents of asynchronous I/O
 say](https://lwn.net/Articles/692254/). However, asynchronous
@@ -98,12 +99,14 @@ library. This syntax allows the code to be way more natural to read
 because it's close to sequential code and is much easier to reason
 about. It attracted a lot of mindshare because it was the standard
 approach, and this is what the ambitious
-[aio-libs](https://github.com/aio-libs) project supports. That includes
-aiohttp, but also aiomysql, aiopg, aioredis, and so on. Unfortunately,
-[asyncio is a complex beast with many concepts to
+[aio-libs](https://github.com/aio-libs) project supports. That
+includes aiohttp, but also aiomysql, aiopg, aioredis, and so on.
+Unfortunately, while using it is simple, [asyncio itself is a complex
+beast with many concepts to
 understand](http://lucumr.pocoo.org/2016/10/30/i-dont-understand-asyncio/).
-Starting with Python 3.6, asyncio is no longer included on a [provisional
-basis](https://docs.python.org/3.5/glossary.html#term-provisional-api)
+Starting with Python 3.6, asyncio is no longer included on a
+[provisional
+basis](https://docs.python.org/3.6/glossary.html#term-provisional-api)
 and is now guaranteed to be stable. It will continue to be the first
 place newcomers come to. Not going away either.
 
@@ -133,7 +136,9 @@ keep the async functions in our code to a minimum. In [The Function
 Colour
 Myth](https://lukasa.co.uk/2016/07/The_Function_Colour_Myth/#how-to-live-with-coloured-functions),
 Cory Benfield argues that with care, no more than 10% of your codebase
-needs to be `async` functions. But this is only true in new codebases.
+needs to be `async` functions. But this is only true in new codebases,
+and still difficult to do: as long as you have an async function, all
+callers must be async.
 
 In many existing codebases, we don't try to isolate I/O code. When we
 do try, we only isolate I/O in a specific class or function, but it
@@ -157,14 +162,16 @@ h11, for example, has 100% coverage for both statements and branches.
 The idea is generic, and a library named
 [python-effect](https://github.com/python-effect/effect) tries to help
 with it. The names comes from programming language research, but what
-is basically does is isolating I/O and state-manipulation code in
+it basically does is isolating I/O and state-manipulation code in
 objects. Those objects capture the I/O computation, which allows to
 perform I/O in a really small part of the code. Time will tell how
 successful this library becomes.
 
-Anyway, if you write Python asynchronous code, I encourage you to
-think about staying compatible. Please don't get stuck in a single
-world, the other ones have many things to offer!
+The concept itself, however, is already succesful, and is named [sans
+I/O](http://sans-io.readthedocs.io/). If you write Python asynchronous
+libraries, I encourage you to think about staying compatible. Please
+don't get stuck in a single world, the other ones have many things to
+offer!
 
 <!-- vim: spelllang=en
 -->
