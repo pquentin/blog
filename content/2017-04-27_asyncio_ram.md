@@ -5,7 +5,7 @@ Category: Logiciel
 One of the first hurdles that you can encounter when trying out
 asyncio is "asyncio eats all my memory!". Indeed, to keep you CPU
 busy, you're encouraged to launch a lot of coroutines simultaneously.
-coroutines don't use a lot of memory by themselves, but what you're
+Coroutines don't use a lot of memory by themselves, but what you're
 doing inside them can use quite a lot of memory. 
 
 <img alt="Rail semaphore (CC BY 2.0, Dave-F at http://flickr.com/photos/92163630@N00/3060839)" src="{filename}/images/asyncio_ram_semaphore.jpg" style="float: left; max-width:100%; height:300px; padding: 0 1em 1em 0"/>
