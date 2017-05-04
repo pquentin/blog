@@ -83,7 +83,7 @@ Let's see a full example now. We have this initial code:
         tasks = []
         for i in range(100):
             tasks.append(asyncio.ensure_future(do_work()))
-        await asyncio.gather(tasks)
+        await asyncio.gather(*tasks)
 
     if __name__ == '__main__':
         loop = asyncio.get_event_loop()
@@ -112,7 +112,7 @@ this:
             # new: pass the semaphore to the coroutine that will limit
             # itself
             tasks.append(asyncio.ensure_future(do_work(semaphore)))
-        await asyncio.gather(tasks)
+        await asyncio.gather(*tasks)
 
     if __name__ == '__main__':
         loop = asyncio.get_event_loop()
