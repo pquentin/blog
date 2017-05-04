@@ -8,7 +8,7 @@ busy, you're encouraged to launch a lot of coroutines simultaneously.
 Coroutines don't use a lot of memory by themselves, but what you're
 doing inside them can use quite a lot of memory. 
 
-<img alt="Rail semaphore (CC BY 2.0, Dave-F at http://flickr.com/photos/92163630@N00/3060839)" src="{filename}/images/asyncio_ram_semaphore.jpg" style="float: left; max-width:100%; height:300px; padding: 0 1em 1em 0"/>
+<img alt="Rail semaphore (CC BY 2.0, Dave-F at http://flickr.com/photos/92163630@N00/3060839)" src="{filename}/images/asyncio_ram_semaphore.jpg" style="float: left; max-width:50%; max-height: 300px; height:auto; padding: 0 1em 1em 0"/>
 
 I worked recently on an asynchronous crawler that runs in a Kubernetes
 cluster. As with all microservices that run in our cluster, I

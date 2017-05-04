@@ -1,7 +1,6 @@
 Title: Diagnostiquer un problème de connexion Internet (à la Réunion)
 Date: 2016-11-04T09:30:00+04:00
 Category: misc
-:status: hidden
 
 J'ai emménagé l'an dernier à l'île de la Réunion, où j'ai la chance de
 travailler à distance pour [Clustree](https://www.clustree.com/) en
