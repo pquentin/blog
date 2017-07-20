@@ -50,11 +50,12 @@ def output_unescaped_json(value, *, indent=0):
         out += str(value)
     elif isinstance(value, list):
         out += '[\n' + ' ' * next_indent
+        out_items = [
+            output_unescaped_json(item, indent=next_indent)
+            for item in value
+        ]
         sep = ',\n' + ' ' * next_indent
-        for item in value:
-            out += output_unescaped_json(item, indent=next_indent)
-            out += sep
-        out = out[:-len(sep)]
+        out += sep.join(out_items)
         out += '\n' + ' ' * indent + ']'
     else:
         assert False, type(value)
@@ -64,16 +65,14 @@ def output_unescaped_json(value, *, indent=0):
 
 In the list case, we first simply print `[`, without having to worry
 about indentation, because we know we're already at the correct place.
-Then we add a newline, plus the needed indentation. Next, we output:
+Then we add a newline, plus the needed indentation. Next, we output
+each item with a recursive call, separated by `sep`:
 
- * each item with a recursive call,
  * the comma,
  * the newline,
  * and the indentation needed before the next item.
 
-Since all this is not needed for the closing `]`, we remove it after
-the loop, which is simpler that figuring when not to print it. And we
-finally print the closing `]`.
+And we finally print the closing `]`.
 
 I found this to be simpler than trying to do this the other way
 around. I actually *tried* to do it the other way around, and when I
