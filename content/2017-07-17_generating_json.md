@@ -47,7 +47,7 @@ def output_unescaped_json(value, *, indent=0):
     next_indent = indent + 2
 
     if isinstance(value, int):
-        out += value
+        out += str(value)
     elif isinstance(value, list):
         out += '[\n' + ' ' * next_indent
         sep = ',\n' + ' ' * next_indent
