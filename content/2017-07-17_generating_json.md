@@ -6,12 +6,12 @@ Category: Logiciel
 
 At work, I recently wanted to visualize how we annotated documents
 that we store as JSON in Elasticsearch. We annotate substrings with
-different codes, and I wanted to show those codes using colors. This
-basically boils down to outputting JSON with [ANSI escape
-codes](https://en.wikipedia.org/wiki/ANSI_escape_code). The easier
-part was inserting color codes inside the strings. But once that was
-done, I could not simply print the resulting JSON, because the escape
-codes would be escaped, not interpreted in my terminal!
+different codes, and I wanted to show those codes using colors in a
+terminal. This basically boils down to outputting JSON with [ANSI
+escape codes](https://en.wikipedia.org/wiki/ANSI_escape_code). The
+easier part was inserting color codes inside the strings. But once
+that was done, I could not simply print the resulting JSON, because
+the escape codes would be escaped, not interpreted in my terminal!
 
 In other words, I had to write a JSON encoder that would look exactly
 like a JSON encoder, except that it would not escape anything. (Note
@@ -32,14 +32,27 @@ indented with two spaces at each level, as if I had used
 ]
 ```
 
-It turns out that the natural way to do it is to indent *after* each
-value, not before. In other words, instead of saying "ok I'm in a
-list, let's indent by two spaces before printing the value", you'll
-say "ok, I'm in a list, I'll print the list value and print the two
-spaces before the next value".
+When I looked at the wanted output above, I was tempted to print line
+by line, prepending each value with the correct output. It did not
+really go well, and after a few special cases I gave up and checked
+how [CPython did
+it](https://github.com/python/cpython/blob/master/Lib/json/encoder.py).
 
-Let's say we restrict ourselves to nested lists of integers (as
-in the above example), this would look like:
+Their algorithm, which I ended up adopting, is more natural for a
+recursive solution. The key observation is that you only have two
+types of JSON objects that affect spacing: *object* (dict) and *array*
+(list and tuple). If you handle them correctly, the other ones can
+simply be added to the output without any spaces.
+
+So, for lists, you need to output:
+
+ * the opening `[` plus the correct indentation until the first item,
+ * all items separated by commas and indentation,
+ * the indentation between the last item and `]`.
+
+You don't need to worry about printing the items themselves: just call
+your function recursively! Here is how it looks like with ints and
+lists:
 
 ```
 def output_unescaped_json(value, *, indent=0):
@@ -49,13 +62,16 @@ def output_unescaped_json(value, *, indent=0):
     if isinstance(value, int):
         out += str(value)
     elif isinstance(value, list):
+        # opening [ and indentation until first item
         out += '[\n' + ' ' * next_indent
+        # each item separated by commas and indentation
         out_items = [
             output_unescaped_json(item, indent=next_indent)
             for item in value
         ]
         sep = ',\n' + ' ' * next_indent
         out += sep.join(out_items)
+        # indentation between the last item and ]
         out += '\n' + ' ' * indent + ']'
     else:
         assert False, type(value)
@@ -63,26 +79,19 @@ def output_unescaped_json(value, *, indent=0):
     return out
 ```
 
-In the list case, we first simply print `[`, without having to worry
-about indentation, because we know we're already at the correct place.
-Then we add a newline, plus the needed indentation. Next, we output
-each item with a recursive call, separated by `sep`:
+As with textbook recursive algorithms, it is elegant because you're
+only solving one problem at a time, but it can be tricky to get to the
+solution, convince you that it works, and debug it. If you want to
+make sure you fully understand what is going on, try working out the
+dictionary case (`{'key': 'value'}`).
 
- * the comma,
- * the newline,
- * and the indentation needed before the next item.
-
-And we finally print the closing `]`.
-
-I found this to be simpler than trying to do this the other way
-around. I actually *tried* to do it the other way around, and when I
-got stuck, I looked at [how CPython does
-it](https://github.com/python/cpython/blob/master/Lib/json/encoder.py),
-and used the same method.
-
-Sorry if this is unclear. If you're really interested, try working out
-the dictionary case (`{'key': 'value'}`). This is the best way to
-ensure you fully understand what's going on.
+You may be wondering: why is this a recursive algorithm? This must
+mean it's not pythonic, right? While it would be possible to rewrite
+this as an iterative algorithm, it's still going to traverse the whole
+tree, and the algorithm will only be harder to read for marginal
+gains, and this is the kind of optimizations that CPython avoids
+doing. And if your JSON is so deep that you exceed the recursion
+limit, you have other problems to solve first. :)
 
 <!-- vim: spelllang=en
 -->
