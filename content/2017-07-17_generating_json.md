@@ -91,7 +91,7 @@ pythonic](http://neopythonic.blogspot.fr/2009/04/tail-recursion-elimination.html
 right? While it would be possible to rewrite this as an iterative
 algorithm, it's still going to traverse the whole tree, and the
 iterative algorithm will only be harder to read for marginal gains,
-and this is the kind of optimizations that CPython avoids doing. And
+and this is the kind of optimization that CPython avoids doing. And
 if your JSON is so deep that you exceed the recursion limit, you have
 other problems to solve first. :)
 
