@@ -93,5 +93,10 @@ gains, and this is the kind of optimizations that CPython avoids
 doing. And if your JSON is so deep that you exceed the recursion
 limit, you have other problems to solve first. :)
 
+However, there is an obvious optimization that I left out: using
+`yield` and `yield from` and build the resulting string with a single
+`join` call. But that requires adding another function for the `join`
+call. I decided to keep things simple here.
+
 <!-- vim: spelllang=en
 -->
