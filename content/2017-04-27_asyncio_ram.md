@@ -3,7 +3,7 @@ Date: 2017-04-27T09:00:00+04:00
 Category: Logiciel
 
 One of the first hurdles that you can encounter when trying out
-asyncio is "asyncio eats all my memory!". Indeed, to keep you CPU
+asyncio is "asyncio eats all my memory!". Indeed, to keep your CPU
 busy, you're encouraged to launch a lot of coroutines simultaneously.
 Coroutines don't use a lot of memory by themselves, but what you're
 doing inside them can use quite a lot of memory. 
@@ -28,7 +28,7 @@ ten minutes if I'm going to be idle for one hour after that.
 Now that we've understood the problem, what is the solution? Well,
 it's simply to limit the number of coroutines that are running
 simultaneously. How do you do that? That was not obvious to me. It
-turns out you to be the classical concurrency solution: a semaphore!
+turns out to be the classical concurrency solution: a semaphore!
 
 Using a semaphore can seem a bit counter-untuitive. After all, we're
 using only a single thread, so trying to prevent multiple things to
@@ -65,7 +65,7 @@ context manager:
 It conveys our intent more clearly and prevents bugs. (Indeed,
 [decoupling acquire and release is only a recipe for failure
 anyways](http://web.stanford.edu/~engler/deviant-sosp-01.pdf).) To add
-one more level of safety, we'll use a `BoundedSemaphore` that ensure
+one more level of safety, we'll use a `BoundedSemaphore` that ensures
 that we can never call `release()` more than `await acquire()`.
 
 Let's see a full example now. We have this initial code:
