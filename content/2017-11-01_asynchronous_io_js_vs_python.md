@@ -11,8 +11,7 @@ actually the same (the *semantics* are equivalent). The main takeaway
 from this post should be:
 
  * JavaScript programmers should learn from Python (and C#) idioms
-   because that will make their code easier to reason about and will
-   allow them to switch between languages more easily.
+   because it will allow them to switch between languages more easily.
  * Python programmers should realize that learning to write code with
    asyncio will help them in JavaScript and other languages.
 
@@ -25,16 +24,9 @@ JavaScript code. For example:
 
     :::js
     function getProcessedData(url) {
-      return downloadData(url) // returns a promise
-        .catch(e => {
-          return downloadFallbackData(url)  // returns a promise
-            .then(v => {
-              return processDataInWorker(v); // returns a promise
-            });
-        })
-        .then(v => {
-          return processDataInWorker(v); // returns a promise
-        });
+      downloadData(url)
+      .catch(e => downloadFallbackData(url))
+      .then(data => processDataInWorker(data))
     }
 
 Here's how we would write this in Python:
@@ -47,12 +39,12 @@ Here's how we would write this in Python:
             v = await downloadFallbackData(url)
         return await processDataInWorker(v)
 
-Quite different! It's not only about the braces: the Python code here
-reads like normal, synchronous code (with an added `async` and a few
-`await`s). But I'm here to convince you that those two snippets are
-actually equivalent. The main reason why they are is that Python's
-asyncio and JavaScript made the same choices.
-
+Quite different! The Python code here reads like normal, synchronous
+code (with an added `async` and a few `await`s). It's also handling
+exceptions using using a mechanism that is standard in many languages.
+But I'm here to convince you that those two snippets are actually
+equivalent. The main reason why they are is that Python's asyncio and
+JavaScript made the same choices.
 
 # The goal: not waiting for I/O
 
@@ -145,17 +137,11 @@ even though async/await is supported in Node.js since 2016 and is
 Okay, as a JavaScript programmer, why would you want to make the
 switch? Remember the code above? No, don't scroll! Here it is:
 
+    :::js
     function getProcessedData(url) {
-      return downloadData(url)
-        .catch(e => {
-          return downloadFallbackData(url)
-            .then(v => {
-              return processDataInWorker(v);
-            });
-        })
-        .then(v => {
-          return processDataInWorker(v);
-        });
+      downloadData(url)
+      .catch(e => downloadFallbackData(url))
+      .then(data => processDataInWorker(data))
     }
 
 You can turn into this:
@@ -167,17 +153,18 @@ You can turn into this:
       } catch(e) {
         v = await downloadFallbackData(url);
       }
-      return processDataInWorker(v);
+      return await processDataInWorker(v);
     }
 
-This is much clearer and allows you to use familiar tools that you use
-in the rest of your code, such as try/catch blocks. This allows other
-programmers coming from other languages to get up to speed quickly,
-and makes the code easier to reason about. And it's fully compatible
-with promises, in the sense you can simply await on a promise not only
-on an `async function`.
+This has three benefits.
 
-And it's now nearly identical to the Python equivalent:
+ * You can use existing idioms such as try/catch blocks.
+ * Programmers coming from other languages can get up to speed
+   quickly.
+ * It's fully compatible with promises, in the sense you can simply
+   await on a promise, not only on an async function.
+
+And it's now identical to the Python equivalent:
 
     async def getProcessedData(url):
         try:
@@ -186,9 +173,7 @@ And it's now nearly identical to the Python equivalent:
             v = await downloadFallbackData(url)
         return await processDataInWorker(v)
 
-The only difference is that you still to `await` the final returned
-promise in Python while that is optional in JavaScript. Okay, and
-there are less braces. :)
+Okay, a few less braces. :)
 
 # Conclusion
 
