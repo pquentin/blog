@@ -18,7 +18,7 @@ from this post should be:
 # Motivation
 
 When I first studied promises in JavaScript and asyncio in Python,
-they looked quite different to me. Indeed, promises use a lot of
+they looked quite different to me. Indeed, promises can use a lot of
 anonymous functions and handle errors differently from other
 JavaScript code. For example:
 
