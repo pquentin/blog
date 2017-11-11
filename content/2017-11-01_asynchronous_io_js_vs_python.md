@@ -195,5 +195,9 @@ list to continue to grow.
 
 It's not that difficult: learn how to use async/await!
 
+Thanks to [Julien Pradet](https://www.julienpradet.fr/) for the
+detailed and insightful review that help to massively improve this
+blog post.
+
 <!-- vim: spelllang=en
 -->
