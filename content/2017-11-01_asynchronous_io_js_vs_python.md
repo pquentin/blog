@@ -50,18 +50,24 @@ JavaScript made the same choices.
 
 Say you want to write a web server from scratch. One of the first
 problems you will want to tackle is: how do I accept connections from
-multiple clients? The key idea here is that in each request, your
-server is likely to spend time waiting for I/O, especially if it's
-serving requests over the Internet. When a given request A is waiting
-for I/O, you want to take advantage of this to serve the other
-requests since you can't progress on request A anyways.
+*multiple* clients at the same time?
+
+Well, a given request can trigger a lot of input/output (I/O): reading
+files, accessing to the databases and actually communicating with the
+client via the Internet. During I/O, the computer has nothing to do:
+he can simply take advantage of this to serve the other requests in
+the meantime.
 
 Web browsers do the same thing when they want to render a web page:
 they don't wait for one resource to arrive to fetch next one. A web
 scraper will not wait either to get one page to start fetching the
-next one. All those common use cases are said to be I/O bound, and you
-can take advantage of this to improve throughput: each request won't
-be faster than before, but all of them will finish much sooner.
+next one. And in a JavaScript web application, you don't want to
+prevent scrolling or other actions from a user when making a request
+to the server. All those common use cases are said to be I/O bound,
+and you can take advantage of this to improve throughput: each request
+won't be faster than before, but all of them will finish much sooner.
+
+The idea is simple enough. But how do we do it?
 
 # Threads to the rescue?
 
@@ -72,9 +78,10 @@ actually very efficient! This is how projects like Apache and uWSGI
 work, and it's also supported in nginx. And even though
 [multithreading as a programming model has bad reputation][1], in
 those cases it's usually just fine because there is very little actual
-shared state or it's hidden by your web server. (Note that I'm using
-the word "thread" here but this also applies to processes, especially
-on Linux where threads are just processes with less overhead.)
+shared state and your web server takes care of it. (Note that I'm
+using the word "thread" here but this also applies to processes,
+especially on Linux where threads are just processes with less
+overhead.)
 
 [1]: https://stackoverflow.com/questions/1191553/why-might-threads-be-considered-evil
 
