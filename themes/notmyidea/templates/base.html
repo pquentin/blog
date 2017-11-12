@@ -24,43 +24,8 @@
         </header><!-- /#banner -->
         {% block content %}
         {% endblock %}
-        <section id="extras" class="body">
-        {% if LINKS %}
-                <div class="blogroll">
-                        <h2>{{ LINKS_WIDGET_NAME | default('links') }}</h2>
-                        <ul>
-                        {% for name, link in LINKS %}
-                            <li><a href="{{ link }}">{{ name }}</a></li>
-                        {% endfor %}
-                        </ul>
-                </div><!-- /.blogroll -->
-        {% endif %}
-        {% if SOCIAL or FEED_ALL_ATOM or FEED_ALL_RSS %}
-                <div class="social">
-                        <h2>{{ SOCIAL_WIDGET_NAME | default('social') }}</h2>
-                        <ul>
-                            {% if FEED_ALL_ATOM %}
-                            <li><a href="{{ FEED_DOMAIN }}/{{ FEED_ALL_ATOM }}" type="application/atom+xml" rel="alternate">atom feed</a></li>
-                            {% endif %}
-                            {% if FEED_ALL_RSS %}
-                            <li><a href="{{ FEED_DOMAIN }}/{{ FEED_ALL_RSS }}" type="application/rss+xml" rel="alternate">rss feed</a></li>
-                            {% endif %}
 
-                        {% for name, link in SOCIAL %}
-                            <li><a href="{{ link }}">{{ name }}</a></li>
-                        {% endfor %}
-                        </ul>
-                </div><!-- /.social -->
-        {% endif %}
-        </section><!-- /#extras -->
-
-        <footer id="contentinfo" class="body">
-                <address id="about" class="vcard body">
-                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
-                </address><!-- /#about -->
-
-                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
-        </footer><!-- /#contentinfo -->
+                <!-- <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p> -->
 
 {% include 'analytics.html' %}
 {% include 'disqus_script.html' %}
