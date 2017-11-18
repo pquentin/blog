@@ -153,6 +153,7 @@ switch? Remember the code above? No, don't scroll! Here it is:
 
 You can turn into this:
 
+    :::js
     async function getProcessedData(url) {
       let v;
       try {
@@ -173,6 +174,7 @@ This has three benefits.
 
 And it's now identical to the Python equivalent:
 
+    :::python3
     async def getProcessedData(url):
         try:
             v = await downloadData(url)
