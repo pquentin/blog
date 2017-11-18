@@ -91,16 +91,17 @@ Event loops are an alternative to threads with different advantages.
 The language does not have to support threads, which was important for
 JavaScript which did not support them initially.
 
-The event loop is well, [a
-loop](https://github.com/AndreLouisCaron/a-tale-of-event-loops)! It
-will give work to the various functions that are running. When a
-function is waiting for I/O, the loop knows that it does not need to
-run that function until the I/O request is finished. The initial
-mechanism to do this is calling back a function when the event is
-ready, as is common in graphical interfaces programming. In the early
-2000s, when [Ajax](https://en.wikipedia.org/wiki/Ajax_(programming))
-was all the rage, this is already what was happening: when a request
-was ready, a callback would be called via `onreadystatechange`.
+The [event loop][7] is well, a loop! It will give work to the various
+functions that are running. When a function is waiting for I/O, the
+loop knows that it does not need to run that function until the I/O
+request is finished.  The initial mechanism to do this is calling back
+a function when the event is ready, as is common in graphical
+interfaces programming. In the early 2000s, when
+[Ajax](https://en.wikipedia.org/wiki/Ajax_(programming)) was all the
+rage, this is already what was happening: when a request was ready, a
+callback would be called via `onreadystatechange`.
+
+[7]: https://github.com/AndreLouisCaron/a-tale-of-event-loops
 
 This event loop paradigm uses only one process and one thread, which
 means that there's no context switch needed at the operating system
