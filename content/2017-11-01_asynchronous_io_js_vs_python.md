@@ -15,7 +15,7 @@ from this post should be:
  * Python programmers should realize that learning to write code with
    asyncio will help them in JavaScript and other languages.
 
-# Motivation
+## Motivation
 
 When I first studied promises in JavaScript and asyncio in Python,
 they looked quite different to me. Indeed, promises can use a lot of
@@ -46,7 +46,7 @@ But I'm here to convince you that those two snippets are actually
 equivalent. The main reason why they are is that Python's asyncio and
 JavaScript made the same choices.
 
-# The goal: not waiting for I/O
+## The goal: not waiting for I/O
 
 Say you want to write a web server from scratch. One of the first
 problems you will want to tackle is: how do I accept connections from
@@ -69,7 +69,7 @@ won't be faster than before, but all of them will finish much sooner.
 
 The idea is simple enough. But how do we do it?
 
-# Threads to the rescue?
+## Threads to the rescue?
 
 To execute I/O bound requests concurrently, the solution is usually
 multithreading. All operating systems will suspend a thread that is
@@ -85,7 +85,7 @@ overhead.)
 
 [1]: https://stackoverflow.com/questions/1191553/why-might-threads-be-considered-evil
 
-# Event loop
+## Event loop
 
 Event loops are an alternative to threads with different advantages.
 The language does not have to support threads, which was important for
@@ -113,7 +113,7 @@ Only I/O operations can take place at the same time, which means that
 when you're into a block of code between two I/O operations, you know
 that nothing is going to change under you.
 
-# Level of abstraction
+## Level of abstraction
 
 However, using callbacks every time I/O is needed is not convenient
 and leads to spaghetti code, also known as [callback
@@ -139,7 +139,7 @@ Python is at the async/await level, JS is mostly at the promises level
 even though async/await is supported in Node.js since 2016 and is
 [coming to browsers](http://caniuse.com/#feat=async-functions).
 
-## Moving from Promises to async/await in JavaScript
+### Moving from Promises to async/await in JavaScript
 
 Okay, as a JavaScript programmer, why would you want to make the
 switch? Remember the code above? No, don't scroll! Here it is:
@@ -182,7 +182,7 @@ And it's now identical to the Python equivalent:
 
 Okay, a few less braces. :)
 
-# Conclusion
+## Conclusion
 
 It's really interesting to see that many languages agree that
 async/await is the best way to express asynchronous I/O. Other
