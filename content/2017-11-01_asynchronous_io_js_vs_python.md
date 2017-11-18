@@ -8,12 +8,10 @@ JavaScript promises appear to be very different from Python's asyncio.
 But they're not that different! The code is written differently (the
 *syntax* is different), but what is happening under the hood is
 actually the same (the *semantics* are equivalent). The main takeaway
-from this post should be:
-
- * JavaScript programmers should learn from Python (and C#) idioms
-   because it will allow them to switch between languages more easily.
- * Python programmers should realize that learning to write code with
-   asyncio will help them in JavaScript and other languages.
+from this post should be that it's a good idea to use the Python
+idioms everywhere because they are easier to learn and are available
+in many languages, allowing programmers to switch between languages
+more easily.
 
 ## Motivation
 
@@ -40,11 +38,11 @@ Here's how we would write this in Python:
         return await processDataInWorker(v)
 
 Quite different! The Python code here reads like normal, synchronous
-code (with an added `async` and a few `await`s). It's also handling
-exceptions using using a mechanism that is standard in many languages.
-But I'm here to convince you that those two snippets are actually
-equivalent. The main reason why they are is that Python's asyncio and
-JavaScript made the same choices.
+code (with an added `async` and a few `await` keywords). It's also
+handling exceptions using using a mechanism that is standard in many
+languages. My goal is to convince you that those two snippets are
+actually equivalent. The main reason why they are is that Python's
+asyncio and JavaScript made the same choices regarding *concurrency*.
 
 ## The goal: not waiting for I/O
 
@@ -61,11 +59,13 @@ the meantime.
 Web browsers do the same thing when they want to render a web page:
 they don't wait for one resource to arrive to fetch next one. A web
 scraper will not wait either to get one page to start fetching the
-next one. And in a JavaScript web application, you don't want to
-prevent scrolling or other actions from a user when making a request
-to the server. All those common use cases are said to be I/O bound,
-and you can take advantage of this to improve throughput: each request
-won't be faster than before, but all of them will finish much sooner.
+next one. And in a JavaScript web application, different events can
+take a different amount of time to handle: you don't want to block
+scrolling events even when loading resources from the server.  All
+those common use cases are said to be I/O bound, and you can take
+advantage of this to improve throughput: each request won't be faster
+than before, but all of them will finish much sooner. This is one way
+to achieve concurrency.
 
 The idea is simple enough. But how do we do it?
 
@@ -121,10 +121,12 @@ hell](http://callbackhell.com/). Gradually, language designers came up
 with better ways do this. Here they are, from most low-level to most
 convenient:
 
- 1. low-level state machines as provided by mio in Rust
- 1. callbacks as first introduced by Node.js
+ 1. low-level state machines as provided by [mio in Rust][6]
+ 1. callbacks as in the first versions of Node.js
  1. Promises that are now widely used in the JavaScript world
  1. async/await as introduced by C# and supported by Python and ES2017
+
+[6]: http://carllerche.github.io/mio/mio/index.html
 
 Each new level is a higher level of abstraction that makes the
 resulting code more readable. Interestingly, the highest level of
