@@ -152,6 +152,24 @@ Python is at the async/await level, JS is mostly at the promises level
 even though async/await is supported in Node.js since 2016 and is
 [coming to browsers](http://caniuse.com/#feat=async-functions).
 
+<!--
+
+### What about performance?
+
+Event loops are often sold as a way to get high performance
+
+Threads context switch cost
+
+Extreme case event loops are better
+
+In the general case and with dynamic languages like Python and JS I
+don't believe it should be the main reason
+
+Suffice to say that you can get similar performance in both situations
+for I/O bound code.
+
+-->
+
 ### Moving from Promises to async/await in JavaScript
 
 Okay, as a JavaScript programmer, why would you want to make the
