@@ -46,6 +46,9 @@ asyncio and JavaScript made the same choices regarding *concurrency*.
 
 ## The goal: not waiting for I/O
 
+First thing first, in order to understand how they are similar, we
+need to understand what they are trying to solve.
+
 Say you want to write a web server from scratch. One of the first
 problems you will want to tackle is: how do I accept connections from
 *multiple* clients at the same time?
@@ -87,34 +90,40 @@ overhead.)
 
 ## Event loop
 
-Event loops are an alternative to threads with different advantages.
-The language does not have to support threads, which was important for
-JavaScript which did not support them initially.
+In JavaScript, threads were initially not supported! Hopefully, there
+are other ways to perform multiple I/O operations in parallel. One way
+is using an event loop, which is single-threaded.
 
-The [event loop][7] is well, a loop! It will give work to the various
-functions that are running. When a function is waiting for I/O, the
-loop knows that it does not need to run that function until the I/O
-request is finished.  The initial mechanism to do this is calling back
-a function when the event is ready, as is common in graphical
-interfaces programming. In the early 2000s, when
-[Ajax](https://en.wikipedia.org/wiki/Ajax_(programming)) was all the
-rage, this is already what was happening: when a request was ready, a
-callback would be called via `onreadystatechange`.
+The event loop is well, a loop! I don't want to go into too much
+details, but if you're interested, look at this[toy reimplementation
+of the asyncio event loop in Python][7] which explains very nicely how
+we can come up with an implementation step by step. What you need to
+know is that an event loop is a single-threaded loop that knows how to
+wait for I/O. When programming with an event loop, your code is only
+interrupted when it needs to perform I/O. When it is interrupted,
+other code can run. It's the programmer that says explicitly when it
+gives the control back to the event loop.
 
 [7]: https://github.com/AndreLouisCaron/a-tale-of-event-loops
 
-This event loop paradigm uses only one process and one thread, which
-means that there's no context switch needed at the operating system
-level, and that running the next bit of code is slightly less costly
-than with threads (but other costs can dwarf this benefit).
+What's interesting with event loops is the way it allows programmers
+to reason about concurrency more easily. Only I/O operations can be
+executed in parallel, which means that when you're into a block of
+code between two I/O operations, you know that nothing is going to
+change under you, which is makes things much easier than with threads!
+// unyielding
 
-However, the most interesting thing about using an event loop is the
-way it allows programmers to reason about concurrency more easily.
-Only I/O operations can take place at the same time, which means that
-when you're into a block of code between two I/O operations, you know
-that nothing is going to change under you.
+Okay, but what does it look like in practice? There are different ways
+to program using an event loop, let's look at then.
 
-## Level of abstraction
+## Levels of abstraction
+
+The initial mechanism is asking the event loop to call back a function
+when an event is ready, as is common in graphical interfaces
+programming. In the early 2000s, when
+[Ajax](https://en.wikipedia.org/wiki/Ajax_(programming)) was all the
+rage, this is what was happening: when a request was ready, a callback
+would be called via `onreadystatechange`.
 
 However, using callbacks every time I/O is needed is not convenient
 and leads to spaghetti code, also known as [callback
@@ -123,7 +132,7 @@ with better ways do this. Here they are, from most low-level to most
 convenient:
 
  1. low-level state machines as provided by [mio in Rust][6]
- 1. callbacks as in the first versions of Node.js
+ 1. callbacks as in the first versions of Node.js or Ajax
  1. Promises that are now widely used in the JavaScript world
  1. async/await as introduced by C# and supported by Python and ES2017
 
@@ -132,7 +141,8 @@ convenient:
 Each new level is a higher level of abstraction that makes the
 resulting code more readable. Interestingly, the highest level of
 abstraction can be made as fast as the lowest one, as proven by [Rust
-zero-cost futures](https://aturon.github.io/blog/2016/08/11/futures/).
+zero-cost futures](https://aturon.github.io/blog/2016/08/11/futures/)
+and async!/await! macros.
 
 While promises improved the situation greatly, they still require to
 learn a different control flow. async/await, on the other hand, allows
@@ -145,7 +155,8 @@ even though async/await is supported in Node.js since 2016 and is
 ### Moving from Promises to async/await in JavaScript
 
 Okay, as a JavaScript programmer, why would you want to make the
-switch? Remember the code above? No, don't scroll! Here it is:
+switch from promises to async/await? Remember the code above? No,
+don't scroll! Here it is:
 
     :::js
     function getProcessedData(url) {
@@ -154,7 +165,7 @@ switch? Remember the code above? No, don't scroll! Here it is:
       .then(data => processDataInWorker(data))
     }
 
-You can turn into this:
+You can turn it into this:
 
     :::js
     async function getProcessedData(url) {
@@ -190,15 +201,15 @@ Okay, a few less braces. :)
 ## Conclusion
 
 It's really interesting to see that many languages agree that
-async/await is the best way to express asynchronous I/O. Other
-languages that support this idiom are C# (who introduced it, even if
-not using it with an event loop) and Rust ([who considers it essential
-to bring futures to
+async/await is the best way to express asynchronous I/O in combination
+with using an event loop. Other languages that support this idiom are
+C# (who introduced it, even if not using it with an event loop) and
+Rust ([who considers it essential to bring futures to
 developers](https://github.com/alexcrichton/futures-await).  Other
 languages that support this are Dart, Kotlin and Scala: I expect the
 list to continue to grow.
 
-It's not that difficult: learn how to use async/await!
+Using async/await is not that difficult: learn how to do it!
 
 Thanks to [Julien Pradet](https://www.julienpradet.fr/) for the
 detailed and insightful review that help to massively improve this
