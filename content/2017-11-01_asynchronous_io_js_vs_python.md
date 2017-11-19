@@ -34,7 +34,7 @@ Here's how we would write this in Python with asyncio:
     async def getProcessedData(url):
         try:
             v = await downloadData(url)
-        except Exception:
+        except IOError:
             v = await downloadFallbackData(url)
         return await processDataInWorker(v)
 
@@ -50,8 +50,8 @@ explain what that means.
 
 ## The goal: not blocking for I/O
 
-First thing first we need to understand what problem those event loops
-are trying to solve.
+First things first, we need to understand what problem such an event
+loop is trying to solve.
 
 Say you want to write a web server from scratch. One of the first
 problems you will want to tackle is: how do I accept connections from
@@ -67,8 +67,8 @@ This idea works in many situations:
 
  * Web browsers don't wait for one resource to arrive to fetch the
    next one.
- * A web scraper will not wait either to fully receive one page to
-   start fetching the next one.
+ * A web scraper will not wait to fully receive one page to start
+   fetching the next one.
  * And in a JavaScript web application, different events can take a
    different amount of time to handle: you don't want to block
    scrolling events even when loading resources from the server.
@@ -82,9 +82,9 @@ The idea is simple enough. But how do we do it?
 ## Threads to the rescue?
 
 To execute I/O bound requests concurrently, the solution is usually
-multithreading. This solves other solutions than performing I/O in
-parallel, because it also allow to run code in parallel on multiple
-cores.
+multithreading. Multithreading actually solves other problems than
+performing I/O in parallel, because it also allows to run any code
+(not only I/O operations) in parallel on multiple cores.
 
 Anyway, what's important to us here is that all operating systems will
 suspend a thread that is waiting for I/O to allow other threads to get
@@ -108,8 +108,8 @@ in parallel. One way is using an single-threaded event loop.
 An event loop is well, a loop! I don't want to go into too much
 details, but if you're interested, look at this [toy reimplementation
 of the asyncio event loop in Python][2] which explains very nicely how
-we can come up with an implementation step by step. What you need to
-know for our purposes:
+we can write an event loop step by step. However, for our purposes you
+only need to know this:
 
  * The job of the event loop is to wait for I/O without blocking
    the rest of the code.
@@ -163,7 +163,8 @@ macros](https://github.com/alexcrichton/futures-await).
 
 While promises improved the situation greatly, they still require to
 learn a different control flow. async/await, on the other hand, allows
-the programmer to reason with the usual tools use in synchronous code.
+the programmer to reason with the usual tools used in synchronous
+code.
 
 Python is at the async/await level, JS is mostly at the promises level
 even though async/await is supported in Node.js since 2016 and is
