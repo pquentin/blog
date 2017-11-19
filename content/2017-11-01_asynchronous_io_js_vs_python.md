@@ -107,7 +107,7 @@ in parallel. One way is using an single-threaded event loop.
 
 An event loop is well, a loop! I don't want to go into too much
 details, but if you're interested, look at this [toy reimplementation
-of the asyncio event loop in Python][7] which explains very nicely how
+of the asyncio event loop in Python][2] which explains very nicely how
 we can come up with an implementation step by step. What you need to
 know for our purposes:
 
@@ -116,7 +116,7 @@ know for our purposes:
  * The job of the programmer is to tell the loop when it is going
    perform I/O and what to do when the I/O is over.
 
-[7]: https://github.com/AndreLouisCaron/a-tale-of-event-loops
+[2]: https://github.com/AndreLouisCaron/a-tale-of-event-loops
 
 What's interesting with event loops is the way it [allows programmers
 to reason about concurrency more
@@ -133,10 +133,11 @@ to program using an event loop, let's look at them.
 
 The initial mechanism is asking the event loop to call back a function
 when an event is ready, as is common in graphical interfaces
-programming. In the early 2000s, when
-[Ajax](https://en.wikipedia.org/wiki/Ajax_(programming)) was all the
-rage, this is what was happening: when a request was ready, a callback
-would be called via `onreadystatechange`.
+programming. In the early 2000s, when [Ajax][3] was all the rage, this
+is what was happening: when a request was ready, a callback would be
+called via `onreadystatechange`.
+
+[3]: https://en.wikipedia.org/wiki/Ajax_(programming)
 
 However, using callbacks every time I/O is needed is not convenient
 and leads to spaghetti code, also known as [callback
@@ -146,12 +147,12 @@ convenient:
 
 <!-- Do I have enough courage to add an example for each level? -->
 
- 1. low-level state machines as provided by [mio in Rust][6]
+ 1. low-level state machines (for example with [mio in Rust][4])
  1. callbacks as in the first versions of Node.js or Ajax
  1. Promises that are now widely used in the JavaScript world
  1. async/await as introduced by C# and supported by Python and ES2017
 
-[6]: http://carllerche.github.io/mio/mio/index.html
+[4]: http://carllerche.github.io/mio/mio/index.html
 
 Each new level is a higher level of abstraction that makes the
 resulting code more readable. Interestingly, the highest level of
@@ -166,7 +167,9 @@ the programmer to reason with the usual tools use in synchronous code.
 
 Python is at the async/await level, JS is mostly at the promises level
 even though async/await is supported in Node.js since 2016 and is
-[coming to browsers](http://caniuse.com/#feat=async-functions).
+[pretty well supported in browsers][5].
+
+[5]: http://caniuse.com/#feat=async-functions
 
 <!--
 
@@ -237,9 +240,10 @@ It's really interesting to see that many languages agree that
 async/await is the best way to express asynchronous I/O in combination
 with using an event loop. Other languages that support this idiom are
 C# (who introduced it) and Rust ([who considers it essential to bring
-futures to developers](https://github.com/alexcrichton/futures-await).
-Other languages that support this are Dart, Kotlin and Scala: I expect
-the list to continue to grow.
+futures to developers][6]). Other languages that support this are
+Dart, Kotlin and Scala: I expect the list to continue to grow.
+
+[6]: https://github.com/alexcrichton/futures-await
 
 Using async/await is not that difficult: learn how to do it!
 
