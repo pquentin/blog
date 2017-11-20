@@ -249,7 +249,7 @@ Dart, Kotlin and Scala: I expect the list to continue to grow.
 Using async/await is not that difficult: learn how to do it!
 
 Thanks to [Julien Pradet](https://www.julienpradet.fr/) for the
-detailed and insightful review that help to massively improve this
+detailed and insightful review that helped to massively improve this
 blog post.
 
 <!-- vim: spelllang=en
