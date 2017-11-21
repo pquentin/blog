@@ -55,7 +55,7 @@ assez facile de savoir si une possibilité est valide grâce à la propriété
 principale de la classe NP : elle se fait en temps polynomial.) On peut ensuite
 chercher une complexité plus précise, par exemple, générer un emploi du temps
 consiste à placer k cours dans n créneaux. La solution connue la plus efficace
-est exponentielle, mais on peut vérifier une solution en temps exponentiel :
+est exponentielle, mais on peut vérifier une solution en temps polynomial :
 c'est ce qui fait du problème un problème NP-complet.
 
 ## P = NP ?
