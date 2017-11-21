@@ -118,7 +118,7 @@ only need to know this:
 
 [2]: https://github.com/AndreLouisCaron/a-tale-of-event-loops
 
-What's interesting with event loops is the way it [allows programmers
+What's interesting with event loops is the way the [allow programmers
 to reason about concurrency more
 easily](https://glyph.twistedmatrix.com/2014/02/unyielding.html). Only
 I/O operations can be executed in parallel, which means that when
@@ -156,8 +156,8 @@ convenient:
 
 Each new level is a higher level of abstraction that makes the
 resulting code more readable. Interestingly, the highest level of
-abstraction can be made as fast as the lowest one, as proven by [Rust
-zero-cost futures](https://aturon.github.io/blog/2016/08/11/futures/)
+abstraction can be made as fast as the lowest one, as proven by Rust
+[zero-cost futures](https://aturon.github.io/blog/2016/08/11/futures/)
 and [async!/await!
 macros](https://github.com/alexcrichton/futures-await).
 
@@ -168,7 +168,7 @@ code.
 
 Python is at the async/await level, JS is mostly at the promises level
 even though async/await is supported in Node.js since 2016 and is
-[pretty well supported in browsers][5].
+[pretty well supported in browsers][5] and compilable away for IE 11.
 
 [5]: http://caniuse.com/#feat=async-functions
 
