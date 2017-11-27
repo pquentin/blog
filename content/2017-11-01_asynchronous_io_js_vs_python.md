@@ -36,7 +36,7 @@ Here's how we would write this in Python with asyncio:
             v = await downloadData(url)
         except IOError:
             v = await downloadFallbackData(url)
-        return await processDataInWorker(v)
+        await processDataInWorker(v)
 
 Quite different! The Python code here reads like normal, synchronous
 code (with an added `async` and a few `await` keywords). It's also
@@ -212,7 +212,7 @@ You can turn it into this:
       } catch(e) {
         v = await downloadFallbackData(url);
       }
-      return await processDataInWorker(v);
+      await processDataInWorker(v);
     }
 
 This has three benefits.
@@ -231,7 +231,7 @@ And it's now identical to the Python equivalent:
             v = await downloadData(url)
         except Exception:
             v = await downloadFallbackData(url)
-        return await processDataInWorker(v)
+        await processDataInWorker(v)
 
 Okay, a few less braces. :)
 
