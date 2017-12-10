@@ -20,8 +20,10 @@ que sur la qualité de la connexion.  Mais c'est aussi ce qui ressort
 des nombreuses discussions que j'ai eues à ce sujet.  Pourtant, ces
 câbles ne sont pas le gros du problème. Un cadre d'Orange avec qui
 j'ai discuté dans un avion Paris - Réunion a d'ailleurs reconnu qu'ils
-servaient souvent d'excuses.  C'est dommage, parce qu'ils empêchent
-les discussions constructives sur le sujet.
+servaient souvent d'excuses. C'est dommage, parce qu'ils empêchent les
+discussions constructives sur le sujet. Et c'est vrai pour tous les
+fournisseurs de l'île : SFR, Orange, Zeop, Mediaserv, Canal Box et
+Parabole Réunion.
 
 ## Débit, latence et ping
 
@@ -64,12 +66,12 @@ chaque requête à un nouveau serveur rajoute au moins 200 millisecondes
 les faire en même temps, ces petits délais s'ajoutent, et on finit par
 avoir un site qui prend 10 secondes à charger entièrement.
 
-Résumons. À la Réunion, les débits sont relativement élevés, mais la
-latence l'est aussi du fait de l'éloignement géographique de l'île.
-C'est acceptable tant que la gigue reste faible. Mais dès que le
-réseau est un peu saturé, la latence et la gigue s'envolent : il
-devient difficile de surfer sur Internet, et impossible de discuter en
-vidéo (Skype par exemple).
+Résumons. À la Réunion, les débits sont relativement élevés (bien !),
+mais la latence l'est aussi du fait de l'éloignement géographique de
+l'île (pas bien !). C'est acceptable tant que la gigue reste faible.
+Mais dès que le réseau est un peu saturé, la latence et la gigue
+s'envolent : il devient difficile de surfer sur Internet, et
+impossible de discuter en vidéo (Skype par exemple).
 
 ## Identifier un problème
 
@@ -213,7 +215,7 @@ sensiblement augmenté mon débit et a réduit les coupures causées par
 la pluie.
 
 La suite ? J'espère être éligible à la fibre d'ici quelques mois. Je
-pourrai alors faire une comparaison détaillé et appuyer mon ressenti
+pourrai alors faire une comparaison détaillée et appuyer mon ressenti
 de vitesse avec des chiffres précis.
 
 Merci à ma femme Élodie ainsi qu'à Florent Bouckenooghe pour leurs
