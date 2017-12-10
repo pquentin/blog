@@ -21,9 +21,11 @@ des nombreuses discussions que j'ai eues à ce sujet.  Pourtant, ces
 câbles ne sont pas le gros du problème. Un cadre d'Orange avec qui
 j'ai discuté dans un avion Paris - Réunion a d'ailleurs reconnu qu'ils
 servaient souvent d'excuses. C'est dommage, parce qu'ils empêchent les
-discussions constructives sur le sujet. Et c'est vrai pour tous les
-fournisseurs de l'île : SFR, Orange, Zeop, Mediaserv, Canal Box et
-Parabole Réunion.
+discussions constructives sur le sujet.
+
+En résumé, voilà quoi faire quand vous avez un problème de connexion
+ou une lenteur avec un des fournisseurs de l'île : SFR, Orange, Zeop,
+Mediaserv, Canal Box ou Parabole Réunion.
 
 ## Débit, latence et ping
 
