@@ -1,4 +1,4 @@
-Title: How do you rate limit calls with asyncio?
+Title: How do you rate limit calls with aiohttp?
 Date: 2017-09-27T09:00:00+04:00
 Category: Logiciel
 
