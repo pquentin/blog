@@ -1,16 +1,13 @@
-Title: Diagnostiquer un problème de connexion Internet (à la Réunion)
+Title: Diagnostiquer un problème de connexion Internet à La Réunion
 Date: 2016-11-04T09:30:00+04:00
 Category: misc
 
-J'ai emménagé l'an dernier à l'île de la Réunion, où j'ai la chance de
-travailler à distance pour [Clustree](https://www.clustree.com/) en
-tant que "développeur back-end". Comme le [dit bien Jeff Atwood][Jeff
-Atwood], la première condition pour du télétravail réussi, c'est
-d'avoir <strong>une bonne connexion Internet</strong>. C'est
-parfaitement possible à la Réunion, mais comment faire quand ça ne va
-pas ? Il faut savoir où est un problème pour pouvoir le corriger. En
-arrivant ici, j'aurais aimé lire un tel article, alors je l'écris en
-espérant qu'il sera utile à d'autres.
+Je travaille à distance depuis La Réunion. La première condition pour
+du télétravail réussi, c'est d'avoir <strong>une bonne connexion
+Internet</strong>. C'est parfaitement possible à La Réunion, mais
+comment faire quand ça ne va pas ? Il faut savoir où est un problème
+pour pouvoir le corriger. En arrivant ici, j'aurais aimé lire un tel
+article, alors je l'écris en espérant qu'il sera utile à d'autres.
 
 En effet, les discussions sur la connexion Internet se concentrent
 souvent sur les câbles sous-marins qui nous relient au réseau mondial.
@@ -68,7 +65,7 @@ chaque requête à un nouveau serveur rajoute au moins 200 millisecondes
 les faire en même temps, ces petits délais s'ajoutent, et on finit par
 avoir un site qui prend 10 secondes à charger entièrement.
 
-Résumons. À la Réunion, les débits sont relativement élevés (bien !),
+Résumons. À La Réunion, les débits sont relativement élevés (bien !),
 mais la latence l'est aussi du fait de l'éloignement géographique de
 l'île (pas bien !). C'est acceptable tant que la gigue reste faible.
 Mais dès que le réseau est un peu saturé, la latence et la gigue
@@ -85,9 +82,9 @@ endroits :
   2. au sein de la maison ou du bureau parce que les différents
      utilisateurs d'une même box saturent la Wi-Fi ou la connexion
      Internet
-  3. à la Réunion parce que la capacité offerte à un quartier est
+  3. à La Réunion parce que la capacité offerte à un quartier est
      insuffisante par rapport au nombre de lignes connectées
-  4. entre la Réunion et la métropole parce qu'un câble sous-marin est
+  4. entre La Réunion et la métropole parce qu'un câble sous-marin est
      endommagé (rare, mais [ça arrive][Coupure câble])
   5. en métropole ou ailleurs parce que le site distant est saturé
 
@@ -113,7 +110,7 @@ outils plus fins, de type traceroute. Le plus pratique que j'ai trouvé
 dans cette famille est [PingPlotter](https://www.pingplotter.com/),
 une interface graphique bien faite (dommage, ce n'est pas un logiciel
 libre, mais la version gratuite reste utile). Regardons le cas d'une
-connexion à zeop.re qui est hébergé à la Réunion&nbsp;:
+connexion à zeop.re qui est hébergé à La Réunion&nbsp;:
 
 <img alt="Connexion à zeop.re" src="{filename}/images/pingplotter_zeop_small.png" width="100%" />
 
@@ -148,7 +145,7 @@ anomalies.
 
 En conclusion, ici tout va bien, la latence bouge peu au cours du
 temps, et elle est d'ailleurs très faible, parce qu'on ne va pas
-loin&nbsp;: on reste à la Réunion. Regardons maintenant un accès à un site
+loin&nbsp;: on reste à La Réunion. Regardons maintenant un accès à un site
 hébergé en métropole&nbsp;:
 
 <img alt="Connexion à orange.re" src="{filename}/images/pingplotter_orange_normal_small.png" width="100%" />
