@@ -15,9 +15,11 @@ microservices. If the receiving endpoint is prepared, sending many
 requests per second might be OK, but in many cases it's not.
 
 In this post, I want to focus on limiting the number of requests per
-second. This is related but different from [limiting the number of
-requests going on at the same time, which I already
-covered.](https://quentin.pradet.me/blog/how-do-you-limit-memory-usage-with-asyncio.html).
+second. This is related but different from limiting the number of
+requests going on at the same time, [which I already
+covered](https://quentin.pradet.me/blog/how-do-you-limit-memory-usage-with-asyncio.html)
+and which is actually available in aiohttp via
+[`limit_per_host`](https://docs.aiohttp.org/en/stable/client.html#limiting-connection-pool-size)
 When you're being limited by a service, it's based on the number of
 requests sent during a specific interval. That's what
 [Twitter](https://dev.twitter.com/rest/public/rate-limiting),
