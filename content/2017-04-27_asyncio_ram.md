@@ -128,5 +128,10 @@ use, the memory each coroutine uses and the memory that the rest of
 your code uses. While you could compute an optimal number, I found
 that trial and error works well here.
 
+If you liked this post, you might like:
+
+ * [How do you rate limit calls with aiohttp?](https://quentin.pradet.me/blog/how-do-you-rate-limit-calls-with-aiohttp.html)
+ * [How do async for loops work in Python?](https://quentin.pradet.me/blog/using-asynchronous-for-loops-in-python.html)
+
 <!-- vim: spelllang=en
 -->

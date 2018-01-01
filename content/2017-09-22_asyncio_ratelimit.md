@@ -150,5 +150,10 @@ context](https://quentin.pradet.me/blog/what-color-is-your-python-async-library.
 
 Any comments? Do you think this would be a nice addition to aiohttp?
 
+If you liked this post, you might like:
+
+ * [How do you limit memory usage with asyncio?](https://quentin.pradet.me/blog/how-do-you-limit-memory-usage-with-asyncio.html)
+ * [How do async for loops work in Python?](https://quentin.pradet.me/blog/using-asynchronous-for-loops-in-python.html)
+
 <!-- vim: spelllang=en
 -->
