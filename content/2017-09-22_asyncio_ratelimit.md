@@ -20,12 +20,13 @@ requests going on at the same time, [which I already
 covered](https://quentin.pradet.me/blog/how-do-you-limit-memory-usage-with-asyncio.html)
 and which is actually available in aiohttp via
 [`limit_per_host`](https://docs.aiohttp.org/en/stable/client.html#limiting-connection-pool-size)
-When you're being limited by a service, it's based on the number of
+However, the limits set by a service are based on the number of
 requests sent during a specific interval. That's what
 [Twitter](https://dev.twitter.com/rest/public/rate-limiting),
 [GitHub](https://developer.github.com/v3/search/#rate-limit),
 [Salesforce](https://developer.salesforce.com/docs/atlas.en-us.salesforce_app_limits_cheatsheet.meta/salesforce_app_limits_cheatsheet/salesforce_app_limits_platform_api.htm)
-and so on do.
+and so on do. This post is going to explain how to do this with
+aiohttp.
 
 ## Token bucket
 
@@ -36,7 +37,7 @@ perform one call. If the bucket is empty, you cannot perform any
 calls: you need to wait for new tokens. Before sending requests, the
 bucket starts with a number of tokens, and you add a new token at
 fixed intervals unless the bucket is full. If you add ten tokens every
-100ms, in the long run you will not make more than ten requets per
+100ms, in the long run you will not make more than ten requests per
 second, even if you may have short bursts where you send more than
 this.
 
@@ -45,8 +46,8 @@ complicated, but a single read might not be enough!
 
 ## Annotating the code
 
-Okay, let's do this. In the context of asyncio, we want to limit calls
-done from the aiohttp library. This is going to be a class named
+Okay, let's do this. The idea is general, but let's see how to limit
+calls done from the aiohttp library. This is going to be a class named
 `RateLimiter` that will intercept HTTP GET requests. This class will
 [decorate](https://en.wikipedia.org/wiki/Decorator_pattern) the
 aiohttp ClientSession class and will be used like this:
