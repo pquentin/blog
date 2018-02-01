@@ -19,8 +19,8 @@ second. This is related but different from limiting the number of
 requests going on at the same time, [which I already
 covered](https://quentin.pradet.me/blog/how-do-you-limit-memory-usage-with-asyncio.html)
 and which is actually available in aiohttp via
-[`limit_per_host`](https://docs.aiohttp.org/en/stable/client.html#limiting-connection-pool-size)
-However, the limits set by a service are based on the number of
+[`limit_per_host`](https://docs.aiohttp.org/en/stable/client.html#limiting-connection-pool-size).
+However, the limits set by a given server are based on the number of
 requests sent during a specific interval. That's what
 [Twitter](https://dev.twitter.com/rest/public/rate-limiting),
 [GitHub](https://developer.github.com/v3/search/#rate-limit),
@@ -33,10 +33,10 @@ aiohttp.
 We're going to use the [token bucket
 algorithm](https://en.wikipedia.org/wiki/Token_bucket) for rate
 limiting. The bucket contains tokens, and you need one token to
-perform one call. If the bucket is empty, you cannot perform any
+perform one call. If the bucket is empty, you cannot perform more
 calls: you need to wait for new tokens. Before sending requests, the
 bucket starts with a number of tokens, and you add a new token at
-fixed intervals unless the bucket is full. If you add ten tokens every
+fixed intervals unless the bucket is full. If you add one token every
 100ms, in the long run you will not make more than ten requests per
 second, even if you may have short bursts where you send more than
 this.
@@ -141,14 +141,14 @@ incorrect results due to low clock resolution or underflows. I am not
 certain this is actually a problem here, but being sure it never
 becomes one is nice!
 
-## Benefits of using asyncio
+## Benefits of asynchronous programming
 
-We don't have to worry about `tokens` or `updated_at` being
-updated by something else. The code looks a lot like the synchronous
-code we're used to, and we can reason about it the same way. But we
-still get great throughput! The only downside is that you need to
-sprinkle your code with `async` and `await` anywhere which [prevents
-you to use it in a synchronous
+We don't have to worry about `tokens` or `updated_at` being updated by
+something else. The code looks a lot like the synchronous code we're
+used to, and we can reason about it the same way. But we still get
+great throughput! The only downside is that you need to sprinkle your
+code with `async` and `await` which [prevents you to use it in a
+synchronous
 context](https://quentin.pradet.me/blog/what-color-is-your-python-async-library.html).
 
 Any comments? Do you think this would be a nice addition to aiohttp?
