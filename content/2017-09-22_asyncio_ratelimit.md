@@ -53,7 +53,7 @@ calls done from the aiohttp library. This is going to be a class named
 aiohttp ClientSession class and will be used like this:
 
 
-    :::python
+    :::python3
     async with aiohttp.ClientSession(loop=loop) as client:
         client = RateLimiter(client)
         async with await client.get(...) as resp:
@@ -66,7 +66,7 @@ our code below.
 Let's see the code and comment it as we go, as if we were using
 literate programming.
 
-    :::python
+    :::python3
     class RateLimiter:
         RATE = 10
         MAX_TOKENS = 10
@@ -78,7 +78,7 @@ do, so this would only result in a high burst at the beginning for no
 good reason. For other applications, it may make sense to use other
 values.
 
-    :::python
+    :::python3
         def __init__(self, client):
             self.client = client
             self.tokens = self.MAX_TOKENS
@@ -91,7 +91,7 @@ much time has elapsed between two buckets fills. We use
 `time.monotonic()` to ensure the time always goes forward, which is a
 nice property you don't get with `time.time()`.
 
-    :::python
+    :::python3
         async def get(self, *args, **kwargs):
             await self.wait_for_token()
             return self.client.get(*args, **kwargs)
@@ -105,7 +105,7 @@ cover other methods such as `post()`.
 
 How do we wait for new tokens?
 
-    :::python
+    :::python3
         async def wait_for_token(self):
             while self.tokens <= 1:
                 self.add_new_tokens()
@@ -126,7 +126,7 @@ delay and use exponential back-off.
 
 The only part of the puzzle left is adding new tokens.
 
-    :::python
+    :::python3
         def add_new_tokens(self):
             now = time.monotonic()
             time_since_update = now - self.updated_at
