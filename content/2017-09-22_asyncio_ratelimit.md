@@ -32,14 +32,14 @@ aiohttp.
 
 We're going to use the [token bucket
 algorithm](https://en.wikipedia.org/wiki/Token_bucket) for rate
-limiting. The bucket contains tokens, and you need one token to
+limiting. The bucket contains tokens, and you consume one token to
 perform one call. If the bucket is empty, you cannot perform more
-calls: you need to wait for new tokens. Before sending requests, the
-bucket starts with a number of tokens, and you add a new token at
-fixed intervals unless the bucket is full. If you add one token every
-100ms, in the long run you will not make more than ten requests per
-second, even if you may have short bursts where you send more than
-this.
+calls: you need to wait for at least one new token. Before sending
+requests, the bucket starts with a number of tokens, and you add a new
+token at fixed intervals unless the bucket is full. If you add one
+token every 100ms, in the long run you will not make more than ten
+requests per second, even if you may have short bursts where you send
+more than this.
 
 You may want to read this again before continuing: it's nothing
 complicated, but a single read might not be enough!
@@ -56,8 +56,12 @@ aiohttp ClientSession class and will be used like this:
     :::python
     async with aiohttp.ClientSession(loop=loop) as client:
         client = RateLimiter(client)
-        async with client.get(...) as resp:
+        async with await client.get(...) as resp:
             ...
+
+So that's a lot like usual aiohttp code, except that we're using
+`await client.get()` instead of `client.get()` because it simplifies
+our code below.
 
 Let's see the code and comment it as we go, as if we were using
 literate programming.
@@ -140,6 +144,10 @@ Indeed, adding and multiplicating small numbers might lead to
 incorrect results due to low clock resolution or underflows. I am not
 certain this is actually a problem here, but being sure it never
 becomes one is nice!
+
+If you want to use that code, here's a [full
+example](https://gist.github.com/pquentin/5d8f5408cdad73e589d85ba509091741)
+so you don't have to copy/paste my code above!
 
 ## Benefits of asynchronous programming
 
