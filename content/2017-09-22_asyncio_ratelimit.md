@@ -26,7 +26,9 @@ requests sent during a specific interval. That's what
 [GitHub](https://developer.github.com/v3/search/#rate-limit),
 [Salesforce](https://developer.salesforce.com/docs/atlas.en-us.salesforce_app_limits_cheatsheet.meta/salesforce_app_limits_cheatsheet/salesforce_app_limits_platform_api.htm)
 and so on do. This post is going to explain how to do this with
-aiohttp.
+aiohttp, which [does not plan to support this
+feature](https://github.com/aio-libs/aiohttp/issues/3184), as noted by
+mcarans in comments.
 
 ## Token bucket
 
@@ -159,7 +161,7 @@ code with `async` and `await` which [prevents you to use it in a
 synchronous
 context](https://quentin.pradet.me/blog/what-color-is-your-python-async-library.html).
 
-Any comments? Do you think this would be a nice addition to aiohttp?
+Any comments?
 
 If you liked this post, you might like:
 
