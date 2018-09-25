@@ -131,15 +131,15 @@ The only part of the puzzle left is adding new tokens.
             now = time.monotonic()
             time_since_update = now - self.updated_at
             new_tokens = time_since_update * self.RATE
-            if new_tokens > 1:
+            if self.tokens + new_tokens >= 1:
                 self.tokens = min(self.tokens + new_tokens, self.MAX_TOKENS)
                 self.updated_at = now
 
 We simply look at the number of tokens we should add since the last
 update and make sure that we do not add more than `MAX_TOKENS`.
 
-The only trick here is that we only change `new_tokens` if it would
-allow for a new request, that is, make `new_tokens` go above 1.
+The only trick here is that we only change `self.tokens` if it would
+allow for a new request, that is, make `self.tokens` go above 1.
 Indeed, adding and multiplicating small numbers might lead to
 incorrect results due to low clock resolution or underflows. I am not
 certain this is actually a problem here, but being sure it never
@@ -165,6 +165,9 @@ If you liked this post, you might like:
 
  * [How do you limit memory usage with asyncio?](https://quentin.pradet.me/blog/how-do-you-limit-memory-usage-with-asyncio.html)
  * [How do async for loops work in Python?](https://quentin.pradet.me/blog/using-asynchronous-for-loops-in-python.html)
+
+Thanks to Kyrean and Miquel for their insightful comments which led to
+corrections in this blog post.
 
 <!-- vim: spelllang=en
 -->
