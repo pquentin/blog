@@ -1,22 +1,31 @@
-Title: JavaScript Promises are equivalent to Python's asyncio
+Title: You don't need promises in Python: just use async/await!
 Date: 2017-11-01T09:00:00+04:00
 Category: Logiciel
 
 <img alt="Promises/A+ logo - https://alexn.org/assets/img/2017/then.png" src="{filename}/images/equivalence_then_logo.png" style="float: right; max-width:30%; max-height: 100px; height:auto; padding: 0 10px 1em 1em"/>
 
-JavaScript promises appear to be very different from Python's asyncio.
-But they're not that different! The code is written differently (the
-*syntax* is different), but what is happening under the hood is
-actually the same (the *semantics* are equivalent).
+If you're coming from a JavaScript background, it's tempting to try to
+use the promises that you know and love with Python. That's what I
+tried to initially too, and I was surprised to see that promises were
+very rarely used in Python. It turns out that promises are not
+*pythonic*: I should have used async/await instead. This post explains
+why async/await is a better idiom that you can use both in Python and
+JavaScript.
+
+I found this surprising at first: I thought that promises were very
+different from Python's async/await. But they're not! The code is
+written differently (the *syntax* is different), but what is happening
+under the hood is actually the same (the *semantics* are equivalent).
 
 The main takeaway from this post should be that it's a **good idea to
-use the Python idioms everywhere** because they are easier to learn and
-are available in many languages, allowing programmers to switch
-between languages more easily.
+use the Python idioms everywhere** because they are easier to learn
+and are available in many languages, allowing programmers to switch
+between languages more easily. In short, I think you should use
+async/await both in JavaScript and Python.
 
 ## Motivation
 
-When I first studied promises in JavaScript and asyncio in Python,
+When I first studied promises in JavaScript and async/await in Python,
 they looked quite different to me. Indeed, promises can use a lot of
 anonymous functions and they handle errors differently from other
 JavaScript code. For example:
@@ -28,7 +37,7 @@ JavaScript code. For example:
       .then(data => processDataInWorker(data))
     }
 
-Here's how we would write this in Python with asyncio:
+Here's how we would write this in Python with async/await:
 
     :::python3
     async def getProcessedData(url):
@@ -44,9 +53,9 @@ handling exceptions using a mechanism that is standard in many
 languages. My goal is to convince you that **those two snippets are
 actually equivalent**.
 
-The main reason why they are equivalent is that Python's asyncio and
-JavaScript both use an event loop with asynchronous I/O. Let's
-explain what that means.
+The main reason why they are equivalent is that Python and JavaScript
+both use an event loop when doing asynchronous I/O. Let's explain what
+that means.
 
 ## The goal: not blocking for I/O
 
@@ -107,7 +116,7 @@ in parallel. One way is using an single-threaded event loop.
 
 An event loop is well, a loop! I don't want to go into too much
 details, but if you're interested, look at this [toy reimplementation
-of the asyncio event loop in Python][2] which explains very nicely how
+of an event loop in Python][2] which explains very nicely how
 we can write an event loop step by step. However, for our purposes you
 only need to know this:
 
