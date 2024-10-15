@@ -4,7 +4,7 @@ Category: Logiciel
 
 <figure style="float:right; width: 40%">
   <a href="https://github.com/urllib3/urllib3/issues/1597#issuecomment-495348116">
-    <img title="A logo I'd like to see adopted for urllib3 :)" src="{filename}/images/tentative-urllib3-logo.png"  style="width: 100%; max-height: 300px; height: auto; padding: 0" /></a>
+    <img title="A logo I'd like to see adopted for urllib3 :)" src="{static}/images/tentative-urllib3-logo.png"  style="width: 100%; max-height: 300px; height: auto; padding: 0" /></a>
   <figcaption style="text-align: center; font-size: 0.8rem">A <a href="https://github.com/urllib3/urllib3/issues/1597#issuecomment-495348116">possible</a> urllib3 logo</figcaption>
 </figure>
 

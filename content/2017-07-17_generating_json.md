@@ -2,7 +2,7 @@ Title: Indenting JSON in Python
 Date: 2017-07-17T09:00:00+04:00
 Category: Logiciel
 
-<img alt="Main JSON railroad diagram - http://www.json.org/fatfree.html" src="{filename}/images/json_value.gif" style="float: right; max-width:50%; max-height: 300px; height:auto; padding: 0 1em 1em 0"/>
+<img alt="Main JSON railroad diagram - http://www.json.org/fatfree.html" src="{static}/images/json_value.gif" style="float: right; max-width:50%; max-height: 300px; height:auto; padding: 0 1em 1em 0"/>
 
 At work, I recently wanted to visualize how we annotated documents
 that we store as JSON in Elasticsearch. We annotate substrings with

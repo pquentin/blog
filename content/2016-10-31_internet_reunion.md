@@ -112,7 +112,7 @@ une interface graphique bien faite (dommage, ce n'est pas un logiciel
 libre, mais la version gratuite reste utile). Regardons le cas d'une
 connexion à zeop.re qui est hébergé à La Réunion&nbsp;:
 
-<img alt="Connexion à zeop.re" src="{filename}/images/pingplotter_zeop_small.png" width="100%" />
+<img alt="Connexion à zeop.re" src="{static}/images/pingplotter_zeop_small.png" width="100%" />
 
 Bon, c'est quoi tout ça ? C'est un résumé visuel de ma connexion à
 zeop.re toutes les 2,5 secondes sur 10 minutes. 
@@ -148,7 +148,7 @@ temps, et elle est d'ailleurs très faible, parce qu'on ne va pas
 loin&nbsp;: on reste à La Réunion. Regardons maintenant un accès à un site
 hébergé en métropole&nbsp;:
 
-<img alt="Connexion à orange.re" src="{filename}/images/pingplotter_orange_normal_small.png" width="100%" />
+<img alt="Connexion à orange.re" src="{static}/images/pingplotter_orange_normal_small.png" width="100%" />
 
 Et oui, orange.re est hébergé en métropole ! Tout comme reunion.fr et
 tant d'autres. (C'est parce que c'est moins cher.) Bon, qu'est-ce que
@@ -168,7 +168,7 @@ tout se passe à merveille.  Je ne peux donc que simuler un problème au
 niveau de mon propre réseau, en saturant ma connexion Internet. Voilà
 ce que ça donne&nbsp;:
 
-<img alt="Connexion à orange.re avec ADSL saturé" src="{filename}/images/pingplotter_orange_adsl_sature_small.png" width="100%" />
+<img alt="Connexion à orange.re avec ADSL saturé" src="{static}/images/pingplotter_orange_adsl_sature_small.png" width="100%" />
 
 Ici, les perturbations commencent dès le deuxième bond, ce qui permet
 de comprendre l'origine du problème : la connexion de ma box au réseau
@@ -178,7 +178,7 @@ maximal offert par ma connexion. Le câble sous-marin lui n'a rien à
 voir, les paquets prennent toujours le même temps pour traverser.
 Voyons un autre problème&nbsp;:
 
-<img alt="Connexion à orange.re avec WiFi saturé" src="{filename}/images/pingplotter_orange_box_saturee_small.png" width="100%" />
+<img alt="Connexion à orange.re avec WiFi saturé" src="{static}/images/pingplotter_orange_box_saturee_small.png" width="100%" />
 
 Ici, il y a des problème dès le premier bond : c'est la Wi-Fi qui est
 saturée ! Et en effet, je transférais un gros fichier entre deux
@@ -186,7 +186,7 @@ ordinateurs via la box, qui était le goulot d'étranglement,
 c'est-à-dire le composant à améliorer pour que le transfert soit plus
 rapide. Enfin, un dernier exemple&nbsp;:
 
-<img alt="Connexion à wikipedia.org" src="{filename}/images/pingplotter_wikipedia_normal_small.png" width="100%" />
+<img alt="Connexion à wikipedia.org" src="{static}/images/pingplotter_wikipedia_normal_small.png" width="100%" />
 
 Ici, il faut 19 bonds, dont un pour aller d'abord en métropole, et un
 autre pour traverser l'Atlantique jusqu'à wikipedia.org. Ce sont ces

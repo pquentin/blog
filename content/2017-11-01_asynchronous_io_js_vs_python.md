@@ -2,7 +2,7 @@ Title: You don't need promises in Python: just use async/await!
 Date: 2017-11-01T09:00:00+04:00
 Category: Logiciel
 
-<img alt="Promises/A+ logo - https://alexn.org/assets/img/2017/then.png" src="{filename}/images/equivalence_then_logo.png" style="float: right; max-width:30%; max-height: 100px; height:auto; padding: 0 10px 1em 1em"/>
+<img alt="Promises/A+ logo - https://alexn.org/assets/img/2017/then.png" src="{static}/images/equivalence_then_logo.png" style="float: right; max-width:30%; max-height: 100px; height:auto; padding: 0 10px 1em 1em"/>
 
 If you're coming from a JavaScript background, it's tempting to try to
 use the promises that you know and love with Python. That's what I

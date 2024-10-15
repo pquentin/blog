@@ -2,7 +2,7 @@ Title: How do you rate limit calls with aiohttp?
 Date: 2017-09-27T09:00:00+04:00
 Category: Logiciel
 
-<img title="An ogee-type spillway at the Crystal Dam in Colorado - https://commons.wikimedia.org/wiki/File:Crystaldamogeespillway.jpg" src="{filename}/images/ratelimit_dam_spillway.jpg" style="float: right; max-width: 50%; max-height: 300px; height: auto; padding: 0 1em 1em" />
+<img title="An ogee-type spillway at the Crystal Dam in Colorado - https://commons.wikimedia.org/wiki/File:Crystaldamogeespillway.jpg" src="{static}/images/ratelimit_dam_spillway.jpg" style="float: right; max-width: 50%; max-height: 300px; height: auto; padding: 0 1em 1em" />
 
 When you first switch away from synchronous sequential code, you
 realize that you can send [hundreds of HTTP requests per
