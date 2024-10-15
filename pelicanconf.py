@@ -1,12 +1,8 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*- #
-from __future__ import unicode_literals
-
 AUTHOR = 'Quentin Pradet'
 SITENAME = 'Quentin Pradet'
-SITEURL = ''
+SITEURL = ""
 
-PATH = 'content'
+PATH = "content"
 
 TIMEZONE = 'Indian/Reunion'
 
@@ -20,18 +16,22 @@ AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
 # Blogroll
-#LINKS = (('Pelican', 'http://getpelican.com/'),
-#         ('Python.org', 'http://python.org/'),
-#         ('Jinja2', 'http://jinja.pocoo.org/'),
-#         ('You can modify those links in your config file', '#'),)
+# LINKS = (
+#     ("Pelican", "https://getpelican.com/"),
+#     ("Python.org", "https://www.python.org/"),
+#     ("Jinja2", "https://palletsprojects.com/p/jinja/"),
+#     ("You can modify those links in your config file", "#"),
+# )
 
 # Social widget
-SOCIAL = (('Twitter', 'https://twitter.com/quentinpradet'),
-          ('Stack Overflow', 'https://stackoverflow.com/users/481584/quentin-pradet?tab=profile'))
+# SOCIAL = (
+#     ("You can add links in your config file", "#"),
+#     ("Another social link", "#"),
+# )
 
 DEFAULT_PAGINATION = 10
 
 # Uncomment following line if you want document-relative URLs when developing
-#RELATIVE_URLS = True
+# RELATIVE_URLS = True
 
-THEME = 'themes/notmyidea'
+THEME = "themes/notmyidea"
